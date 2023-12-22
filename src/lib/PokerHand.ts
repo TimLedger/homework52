@@ -20,7 +20,7 @@ class PokerHand {
   }
 
   private isRoyalFlush(): boolean { 
-    const royalRanks = ['10', 'J', 'Q', 'K', 'A'];
+    const royalRanks = ['10', 'j', 'q', 'k', 'a'];
     const suits = new Set(this.cards.map((card) => card.suit));
 
     if (suits.size === 1) {
@@ -69,8 +69,8 @@ class PokerHand {
     const sortedRanks = this.cards.map((card) => card.rank).sort();
 
     for (let i = 1; i < sortedRanks.length; i++) {
-      const currentRankIndex = '23456789TJQKA'.indexOf(sortedRanks[i]);
-      const previousRankIndex = '23456789TJQKA'.indexOf(sortedRanks[i - 1]);
+      const currentRankIndex = '23456789tjqka'.indexOf(sortedRanks[i]);
+      const previousRankIndex = '23456789tjqka'.indexOf(sortedRanks[i - 1]);
 
       if (currentRankIndex - previousRankIndex !== 1) {
         return false;
