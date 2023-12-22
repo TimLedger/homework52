@@ -1,7 +1,7 @@
 import Card from './Card';
 
 class CardDeck {
-  private cards: Card[];
+    private cards: Array<{ rank: string; suit: string }>;
 
   constructor() {
     this.cards = [];
@@ -19,12 +19,21 @@ class CardDeck {
     return this.cards.splice(Math.floor(Math.random() * this.cards.length), 1)[0];
   }
 
-  getCards(howMany: number): Card[] {
-    const drawnCards: Card[] = [];
-    for (let i = 0; i < howMany; i++) {
-      drawnCards.push(this.getCard());
+  getCards(howMany: number): Array<{ rank: string; suit: string }> { 
+      const cards = [];
+      for (let i = 0; i < howMany; i++) {
+        const card = this.getCard();
+        if (card) {
+          cards.push(card);
+        } else { 
+          console.warn('Колода пуста.');
+        }
+      }
+      return cards;
     }
-    return drawnCards;
+      
+  remainingCards(): number {        
+    return this.cards.length;
   }
 }
 
